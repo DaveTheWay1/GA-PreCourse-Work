@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+
+body {
+    /* * assigning this font family to the body at the top
+    allows for all the font on body to be this font family.
+    the fact that it is at the top is a good thing to practice
+    because this way any other text can have their font changed
+    but if not modified this will  be default for the body */
+    font-family: 'Poiret One', sans-serif;
+    width:100%;
+    max-width: 900px;
+    position: relative;
+}
+/* * the reason we are able to simply put all that position within the body like that
+* without care of possibly affecting other positions is because there is a thing known as
+* "a more specific rule" being applied  here that prevents others from being affected
+what happens is that this is being applied early in  the file and css travels downward
+meaning that if another styling appears for something  in the body, that style will overrule
+the styling from the body. especially if it has a class or id. refereing back to the point system in css*/
+
+h1 {
+    /* moves the text content in h1 to the center of the page */
+    text-align: center;
+    /* makes the color of the text black */
+    color: black;
+    /* sets the font size to 36 */
+    font-size: 36px;
+}
+
+h2 {
+    /* sets the h2 text content to the center */
+    text-align: center;
+    color: black;
+}
+
+p {
+    text-align: center;
+    color: grey;
+}
+
+span {
+    /* puts everything within the space to be the color below */
+    color: #b22222;
+}
+
+a {
+    /* a tag comes with a default underline so text decoration being
+    set to none allows for the line to be removed */
+    text-decoration: none;
+    color: #9932cc;
+}
+
+/* a: hover is a neat trick. it allows for when the mouse hovers 
+over the a tag, the text decoration will appear and in this case 
+we would see the underline */
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    /* unordered list come with a de fault of a black dot marking
+    everything found within the ul. setting the list style to none
+    allows for no dot to appear */
+    list-style: none;
+}
+
+/* in our html w have a p tag with a class of footer.
+the belows is the selector for that class found within the p tag */
+p.footer {
+    font-size: 14px;
+    color: #000000;
+    font-style: italic;
+}
+
+/* we wanted the list to be horizontal. when not target the ul as a whole?
+thats because li is still a block element meaning they do not like to be next to 
+other elements naturally. so if we were to do inline to ul we would still not have them horizontal
+because li remains block. targeting li to be inline calls for li to allow being next to others 
+removing away from its default */
+li.nav {
+    display: inline;
+    padding: 15px;
+}
+
+nav ul {
+    text-align: center;
+    font-size: 18px;
+    /* margin moves away from the sides of the parents that surrounds it */
+    margin: 25px;
+}
+
+/* targets the img found in the class social */
+.social img {
+    width: 30px;
+}
+
+/* targets the img found in the div id of image-grid */
+/* #image-grid img {
+    width: 250px;
+} */
+
+/* this is allows for the width, and in this case the img, to resize to the full width of the page*/
+/* #image-grid img { */
+    /* note, to accomplish this, it must be % and not px */
+    /* width: 250%
+} */
+
+#image-grid img {
+    /* By setting their width to 100%, we can be sure the 
+    images will take up the full screen. */
+    /* width: 100%; */
+    /* by constraining this with a max-width property, we can also ensure that they 
+    don’t grow wider than 500px, even if our screen gets larger. 
+    And when our screen is smaller than 500px, the images will 
+    stretch to fill the space. */
+    /* max-width: 500px; */
+    /* * We have six images total, so two rows with three images each is ideal. This means that each image will take up one-third the width of the container; let’s call it 30%. Here’s how you’d write that: */
+    width: 30%;
+    /* * Notice: We can remove the max-width property from the images, as the <body> now has a max-width, and the images won’t be able to size beyond that. */
+}
+
+/* targets the unordered list in the header. */
+header ul {
+    /* position abosulute means its free to be placed anywhere 
+    rather than sticking to somewhere near only */
+    position: absolute;
+    /* top of the space provided wihin its parent being header */
+    top: 0;
+    /* to the very right no space between of the  space provided of the parents */
+    right: 0;
+}
+
+/* header {
+    width:100%;
+    max-width: 900px;
+    position: relative;
+/* } 
+/* * we remove this header styling from above bc its going to be applied from our body. */
+/* we added postion relative bc our social media list was not 
+aligning to the width and max and it is within the header... 
+this is because an element with position: absolute (like our social 
+media list) will calculate its position based on a parent element 
+with a set position and without postition relative 
+, meaning no set postion, it will refer to the parent being the 
+body set position. to fix, we added position relative to the header 
+as shown above*/
+
+@media screen and (max-width: 350px) {
+    body {
+        background-color: red;
+    }
+}
+/* * what media screen does is it applies the delcation 
+only to those with a screen size width of 350px or less */
+
+@media only screen and (max-width: 600px) {
+    #image-grid img {
+        width: 100%;
+    }
+}
+
+/* * you typically, "pro tip"ly wantt to always put these at the bottom of all code */
+
+/*
+* In summary, the main difference lies in the 
+specificity of the media type. @media only screen 
+specifically targets screens and ignores other media 
+types, while @media screen includes all devices that 
+match the criteria, not just screens. In most cases, 
+using @media only screen is a good practice when you 
+want to target only screen devices. 
+*/
